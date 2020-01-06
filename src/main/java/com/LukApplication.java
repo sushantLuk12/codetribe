@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableAutoConfiguration
 @EnableJpaRepositories(basePackages ="dao")
-@ComponentScan(basePackages = {"controller","service","dao"})
+@ComponentScan(basePackages = {"controller","service","dao","model","config"})
 @EntityScan( basePackages = {"entities"} )
 public class LukApplication {
 
