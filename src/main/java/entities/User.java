@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -24,17 +25,29 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	@NotNull
 	private String firstName;
 	private String lastName;
-	@Pattern(regexp = "(\\+91)[0-9]{10}")
+	@Pattern(regexp = "^\\+(?:[0-9] ?){6,14}[0-9]$",message = "Please enter Valid Mobile Number")
 	private String mobileNo;
-	@Email
+	@NotNull
+	@Email(message = "Please enter valid email")
 	private String email;
 	private String password;
 	private String gender;
 	private String userName;
+	@Column
+    @Lob
+    private byte[] image;
 	
-	
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
