@@ -3,6 +3,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class UserController {
 	UserDao userDao;
 	
 	@RequestMapping(value="/signup",method=RequestMethod.POST)
-	public ResponseEntity<String> signup(@RequestBody User user ) {
+	public ResponseEntity<String> signup(@ModelAttribute User user ) {
         
 			if(user.getGender()!=null) {
 				return userService.signup(user);
@@ -34,7 +35,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public ResponseEntity<String> login(@RequestBody User user) {
+	public ResponseEntity<String> login(@ModelAttribute User user) {
 		
 		if(user.getEmail()!=null && user.getPassword()!=null) {
 			return userService.loginUser(user);
@@ -42,7 +43,7 @@ public class UserController {
 		return new ResponseEntity<>("Please enter correct Details",HttpStatus.BAD_REQUEST);
 	}
 	@RequestMapping(value="/recover",method=RequestMethod.POST)
-	public ResponseEntity<String> recover(@RequestBody User user) {
+	public ResponseEntity<String> recover(@ModelAttribute User user) {
 		
 		if(user.getEmail()!=null) {
 			return userService.loginUser(user);

@@ -25,12 +25,10 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@NotNull
 	private String firstName;
 	private String lastName;
 	@Pattern(regexp = "^\\+(?:[0-9] ?){6,14}[0-9]$",message = "Please enter Valid Mobile Number")
 	private String mobileNo;
-	@NotNull
 	@Email(message = "Please enter valid email")
 	private String email;
 	private String password;
