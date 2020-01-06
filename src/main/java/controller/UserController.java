@@ -17,7 +17,7 @@ public class UserController {
 	
 	@RequestMapping(value="/signup",method=RequestMethod.POST)
 	public ResponseEntity<String> signup(@RequestBody User user) {
-		
+		System.out.println("dennis");
 		if(user.getGender()!=null) {
 			return userService.signup(user);
 		}
